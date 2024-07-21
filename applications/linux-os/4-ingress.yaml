@@ -1,0 +1,26 @@
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: myapp
+  namespace: os-application
+  annotations:
+    cert-manager.io/cluster-issuer: http-01-production
+    external-dns.alpha.kubernetes.io/hostname: os.almahrizi.net
+spec:
+  ingressClassName: external-nginx
+  rules:
+    - host: os.almahrizi.net
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: myapp
+                port:
+                  number: 3000
+  tls:
+    - hosts:
+        - os.almahrizi.net
+      secretName: os-almahrizi-net
