@@ -2,25 +2,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: myapp
-  namespace: os-application
+  name: windows
+  namespace: windos-os
   annotations:
-    cert-manager.io/cluster-issuer: http-01-production
-    external-dns.alpha.kubernetes.io/hostname: os.almahrizi.net
+    cert-manager.io/cluster-issuer: windows-production
+    external-dns.alpha.kubernetes.io/hostname: windows.almahrizi.net
 spec:
   ingressClassName: external-nginx
   rules:
-    - host: os.almahrizi.net
+    - host: windows.almahrizi.net
       http:
         paths:
           - path: /
             pathType: Prefix
             backend:
               service:
-                name: myapp
+                name: windows
                 port:
                   number: 3000
   tls:
     - hosts:
-        - os.almahrizi.net
-      secretName: os-almahrizi-net
+        - windows.almahrizi.net
+      secretName: windows-almahrizi-net

@@ -1,0 +1,23 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: windows
+  namespace: windos-os
+spec:
+  type: ClusterIP
+  selector:
+    name: windows
+  ports:
+    - name: tcp-8006
+      protocol: TCP
+      port: 8006
+      targetPort: 8006
+    - name: tcp-3389
+      protocol: TCP
+      port: 3389
+      targetPort: 3389
+    - name: udp-3389
+      protocol: UDP
+      port: 3389
+      targetPort: 3389

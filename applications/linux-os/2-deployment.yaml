@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: myapp
-  namespace: os-application
+  namespace: linux-os
 spec:
   replicas: 1
   selector:
@@ -27,3 +27,10 @@ spec:
             limits:
               memory: 2Gi
               # cpu: 100m
+          volumeMounts:
+          - mountPath: /config
+            name: storage
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: linux-pvc

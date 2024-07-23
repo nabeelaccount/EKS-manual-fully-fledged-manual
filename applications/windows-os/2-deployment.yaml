@@ -1,0 +1,50 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: windows
+  namespace: windos-os
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: windows
+  template:
+    metadata:
+      labels:
+        app: windows
+    spec:
+      terminationGracePeriodSeconds: 120 # the Kubernetes default is 30 seconds and it may be not enough
+      containers:
+      - name: windows
+        image: dockurr/windows
+        ports:
+          - containerPort: 8006
+            protocol: TCP
+          - containerPort: 3389
+            protocol: TCP
+          - containerPort: 3389
+            protocol: UDP
+        securityContext:
+          privileged: true
+          capabilities:
+            add: ["NET_ADMIN"]
+        env:
+          - name: RAM_SIZE
+            value: 4G
+          - name: CPU_CORES
+            value: "2"
+          - name: DISK_SIZE
+            value: "64G"
+        volumeMounts:
+          - mountPath: /storage
+            name: storage
+          - mountPath: /dev/kvm
+            name: dev-kvm
+      volumes:
+      - name: storage
+        persistentVolumeClaim:
+          claimName: windows-pvc
+      - name: dev-kvm
+        hostPath:
+          path: /dev/kvm
