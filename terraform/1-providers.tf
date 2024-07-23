@@ -11,4 +11,7 @@ terraform {
       version = "~> 5.58"
     }
   }
+
+  # to specify state should be held by S3
+  backend "s3" {}
 }
