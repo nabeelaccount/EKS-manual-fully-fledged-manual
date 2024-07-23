@@ -22,25 +22,25 @@ resource "aws_iam_policy" "external_dns" {
   name = "${aws_eks_cluster.eks.name}-external-dns"
 
   policy = jsonencode({
-    "Version": "2012-10-17",
-    "Statement": [
+    "Version" : "2012-10-17",
+    "Statement" : [
       {
-        "Effect": "Allow",
-        "Action": [
+        "Effect" : "Allow",
+        "Action" : [
           "route53:ChangeResourceRecordSets"
         ],
-        "Resource": [
+        "Resource" : [
           "arn:aws:route53:::hostedzone/*"
         ]
       },
       {
-        "Effect": "Allow",
-        "Action": [
+        "Effect" : "Allow",
+        "Action" : [
           "route53:ListHostedZones",
           "route53:ListResourceRecordSets",
           "route53:ListTagsForResource",
         ],
-        "Resource": [
+        "Resource" : [
           "*"
         ]
       }
@@ -80,7 +80,7 @@ resource "helm_release" "external_dns" {
   }
 
   set {
-    name = "policy"
+    name  = "policy"
     value = "sync"
   }
 
