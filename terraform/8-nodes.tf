@@ -75,5 +75,5 @@ resource "aws_eks_node_group" "general" {
   tags = {
     Name = "os-nodes"
   }
-  
+
 }

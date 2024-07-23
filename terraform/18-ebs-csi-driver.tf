@@ -64,5 +64,5 @@ resource "aws_eks_addon" "ebs_csi_driver" {
   service_account_role_arn = aws_iam_role.ebs_csi_driver.arn
 
   # depends_on = [aws_eks_node_group.general]
-  depends_on = [ helm_release.cert_manager ]
+  depends_on = [helm_release.cert_manager]
 }
