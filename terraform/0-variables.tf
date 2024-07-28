@@ -21,3 +21,8 @@ variable "eks_name" {
 variable "eks_version" {
   default = "1.30"
 }
+
+# variable "eks_oidc_provider" {
+#   type = string
+#   description = "EKS OIDC provider URL. Found under Identity Provider in IAM"
+# }
