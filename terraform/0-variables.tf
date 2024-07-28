@@ -3,15 +3,15 @@ variable "env" {
 }
 
 variable "region" {
-  default = "eu-central-2"
+  default = "eu-west-2"
 }
 
 variable "zone1" {
-  default = "eu-central-2a"
+  default = "eu-west-2a"
 }
 
 variable "zone2" {
-  default = "eu-central-2b"
+  default = "eu-west-2b"
 }
 
 variable "eks_name" {

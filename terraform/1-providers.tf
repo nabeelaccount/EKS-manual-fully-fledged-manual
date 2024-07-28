@@ -12,6 +12,6 @@ terraform {
     }
   }
 
-  # to specify state should be held by S3
-  backend "s3" {}
+  # # to specify state should be held by S3
+  # backend "s3" {}
 }
