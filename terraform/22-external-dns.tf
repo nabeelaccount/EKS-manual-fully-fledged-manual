@@ -1,3 +1,5 @@
+# Create eternal DNS
+
 resource "aws_iam_role" "external_dns" {
   name = "${aws_eks_cluster.eks.name}-external-dns"
 

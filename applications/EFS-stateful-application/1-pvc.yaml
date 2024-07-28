@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: efs-pvc
+  namespace: efs
+spec:
+  accessModes:
+    - ReadWriteMany
+
+  # name from: kubernetes_storage_class_v1 in 20-efs.tf
+  storageClassName: efs
+  resources:
+    requests:
+      storage: 5Gi # Don't matter, it's elastic
